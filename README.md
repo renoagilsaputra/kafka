@@ -77,3 +77,9 @@ log.dirs=data
 **Melihat key pada consumer:**
 ```sh
 .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic belajarkafka --group payment --from-beginning --
+```
+
+## Kafka Client
+[Javascript](https://kafka.js.org/)
+
+[Python](https://kafka-python.readthedocs.io/en/master/)
