@@ -1,58 +1,79 @@
-# kafka
+# Kafka Setup & Commands (Windows)
 
-- Download JDK
-https://adoptium.net/temurin/releases
+## 1. Download JDK
+[Temurin JDK](https://adoptium.net/temurin/releases)
 
-- Download Kafka
-https://kafka.apache.org/downloads
+## 2. Download Kafka
+[Kafka Downloads](https://kafka.apache.org/downloads)
 
-- config
+## 3. Konfigurasi
+Edit file:
+```
 config/kraft/server.properties
-
-- ubah log directories
+```
+Ubah log directories:
+```
 log.dirs=data
+```
 
-- format directory
-- generate uuid
-
+## 4. Format Directory & Generate UUID
+```sh
 .\bin\windows\kafka-storage.bat random-uuid
-
 .\bin\windows\kafka-storage.bat format --cluster-id <UUID> --config .\config\kraft\server.properties
+```
 
-- menjalankan kafka
-.\bin\windows\kafka-server-start.bat .\config\kraft\server.properties 
+## 5. Menjalankan Kafka
+```sh
+.\bin\windows\kafka-server-start.bat .\config\kraft\server.properties
+```
 
--buat topic
+## 6. Topic Management
+**Buat topic:**
+```sh
 .\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic helloworld
-
--melihat topic
+```
+**Lihat topic:**
+```sh
 .\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list
+```
 
--prouduce topic
+## 7. Producer & Consumer
+**Produce topic:**
+```sh
 .\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic belajarkafka
-
--consumer topic
+```
+**Consume topic:**
+```sh
 .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic belajarkafka --from-beginning
+```
+**Consumer group:**
+```sh
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic belajarkafka --group payment --from-beginning
+```
 
--consumer group
-.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic belajarkafka --group payment  --from-beginning
-
--lihat informasi offset
+## 8. Offset & Partition
+**Lihat informasi offset:**
+```sh
 .\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --all-groups --all-topics --describe
-
--partition pada topic
-
--menambahkan
+```
+**Menambah partition:**
+```sh
 .\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --create --topic helloworld --partitions <number>
+```
+**Ubah partition:**
+```sh
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --alter --topic helloworld --partitions <number>
+```
+**Lihat partition:**
+```sh
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --describe --topic <string>
+```
 
--mengubah
-.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --alter--topic helloworld --partitions <number> 
-
--melihat
-.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --describe--topic <string>
-
--menambahkan key pada producer
+## 9. Key pada Producer & Consumer
+**Menambahkan key pada producer:**
+```sh
 .\bin\windows\kafka-console-producer.bat --bootstrap-server localhost:9092 --topic belajarkafka --property "parse.key=true" --property "key.separator=:"
-
--melihat key pada consumer
-.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic belajarkafka --group payment  --from-beginning  --property "print.key=true"
+```
+**Melihat key pada consumer:**
+```sh
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic belajarkafka --group payment --from-beginning --
