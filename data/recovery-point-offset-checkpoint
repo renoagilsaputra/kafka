@@ -10,7 +10,7 @@ __consumer_offsets 30 0
 __consumer_offsets 26 0
 __consumer_offsets 5 0
 __consumer_offsets 38 771
-belajarkafka 0 19
+belajarkafka 0 34
 __consumer_offsets 1 0
 __consumer_offsets 34 0
 __consumer_offsets 16 0
@@ -41,7 +41,7 @@ __consumer_offsets 3 0
 __consumer_offsets 36 0
 __consumer_offsets 47 0
 __consumer_offsets 14 0
-__consumer_offsets 43 0
+__consumer_offsets 43 17
 __consumer_offsets 10 0
 __consumer_offsets 22 0
 __consumer_offsets 18 0
